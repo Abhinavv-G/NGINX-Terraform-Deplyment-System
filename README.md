@@ -7,7 +7,6 @@ A DevOps project demonstrating Docker containerization, NGINX load balancing, Do
 ## Tech Stack
 
 - Docker
-- Docker Compose
 - NGINX
 - Jenkins
 - Python Flask
@@ -21,8 +20,7 @@ A DevOps project demonstrating Docker containerization, NGINX load balancing, Do
 - Docker bridge networking
 - Jenkins CI/CD pipeline
 
-
-<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/881132a9-4747-4574-90a5-2164091bbdd5" />
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/c10dba65-781c-45e1-bc42-fbf35784423f" />
 
 
 ## Run the Project
