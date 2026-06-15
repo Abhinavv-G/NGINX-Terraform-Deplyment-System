@@ -1,64 +1,20 @@
 # NGINX Load-Balanced CI/CD Platform
 
+Containerized microservices platform where NGINX acts as a reverse proxy 
+and Round Robin load balancer across multiple Flask backend instances, 
+with automated builds via Jenkins CI/CD pipeline.
 
-A DevOps project demonstrating Docker containerization, NGINX load balancing, Docker networking, and CI workflow using Jenkins.
-
-
-## Tech Stack
-
-- Docker
-- NGINX
-- Jenkins
-- Python Flask
-
-## Features
-
-- Dockerized Flask application
-- Multiple backend containers
-- NGINX reverse proxy
-- Round-robin load balancing
-- Docker bridge networking
-- Jenkins CI workflow
-
+## Architecture
 <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/c10dba65-781c-45e1-bc42-fbf35784423f" />
 
+## Tech Stack
+- Jenkins | GitHub (CI/CD)
+- Docker + Docker Compose (containerization)
+- NGINX (reverse proxy, load balancing)
+- Python Flask (backend services)
 
-## Run the Project
-
-
-docker compose up --build
-
-Open in browser:
-
-http://localhost
-
-
-## Verify Load Balancing
-
-Refresh the browser multiple times:
-
-http://localhost
-
-Responses alternate between:
-- app1
-- app2
-
-You can also test using:
-
-curl http://localhost
-
-
-## Test Internal Container Communication
-
-docker exec -it nginx sh
-curl http://app1:5000
-curl http://app2:5000
-
-Docker Compose automatically creates a shared bridge network where containers communicate using service names as DNS hostnames.
-
-
-NGINX routes incoming traffic to backend Flask containers using upstream load balancing and Docker internal networking.
-
-
-
-
+## Key Concepts Implemented
+- Round Robin load balancing across N Flask containers
+- Docker bridge networking with DNS-based service discovery
+- NGINX upstream configuration for traffic distribution
+- Jenkins pipeline: Clone → Build → Deploy
