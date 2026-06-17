@@ -1,20 +1,95 @@
-# NGINX Load-Balanced CI/CD Platform
+# Terraform-Based NGINX Load-Balanced CI/CD Platform
 
-Containerized microservices platform where NGINX acts as a reverse proxy 
-and Round Robin load balancer across multiple Flask backend instances, 
-with automated builds via Jenkins CI/CD pipeline.
+A multi-container infrastructure platform that demonstrates Infrastructure as Code (IaC), container orchestration, load balancing, and CI/CD automation. The platform uses Terraform to provision Docker infrastructure, NGINX as a reverse proxy and load balancer, Flask-based backend services, and Jenkins for automated deployment workflows.
+
 
 ## Architecture
-<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/c10dba65-781c-45e1-bc42-fbf35784423f" />
+
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/7e8c63f2-bf07-49b2-89ea-3e4ef61139aa" />
+
+---
+
+## Features
+
+* Infrastructure provisioning using Terraform and Docker Provider
+* Multi-container application deployment
+* NGINX reverse proxy configuration
+* Round Robin load balancing across Flask backend containers
+* Custom Docker networking with service discovery
+* Automated deployment through Jenkins CI/CD pipelines
+* Declarative Infrastructure as Code (IaC)
+* Terraform state management and lifecycle control
+
+---
 
 ## Tech Stack
-- Jenkins | GitHub (CI/CD)
-- Docker + Docker Compose (containerization)
-- NGINX (reverse proxy, load balancing)
-- Python Flask (backend services)
 
-## Key Concepts Implemented
-- Round Robin load balancing across N Flask containers
-- Docker bridge networking with DNS-based service discovery
-- NGINX upstream configuration for traffic distribution
-- Jenkins pipeline: Clone → Build → Deploy
+| Category               | Technologies          |
+| ---------------------- | --------------------- |
+| Infrastructure as Code | Terraform             |
+| CI/CD                  | Jenkins, GitHub       |
+| Containerization       | Docker                |
+| Load Balancing         | NGINX                 |
+| Backend Services       | Python Flask          |
+| Networking             | Docker Bridge Network |
+
+
+
+## Terraform Resources
+
+The following infrastructure components are provisioned through Terraform:
+
+* Docker Network (`app-network`)
+* Flask Application Image
+* NGINX Image
+* Flask Backend Container 1 (`app1`)
+* Flask Backend Container 2 (`app2`)
+* NGINX Load Balancer Container
+
+
+## Jenkins Pipeline Stages
+
+```text
+Clone Repository
+        │
+        ▼
+Terraform Init
+        │
+        ▼
+Terraform Validate
+        │
+        ▼
+Terraform Plan
+        │
+        ▼
+Terraform Apply
+```
+
+
+## Verification
+
+After deployment:
+
+```bash
+terraform output
+```
+
+Output:
+
+```text
+application_url = "http://localhost"
+backend_containers = [
+  "app1",
+  "app2"
+]
+load_balancer = "nginx"
+```
+
+Access:
+
+```text
+http://localhost
+```
+
+Refreshing the page routes requests between backend containers through NGINX Round Robin load balancing.
+
